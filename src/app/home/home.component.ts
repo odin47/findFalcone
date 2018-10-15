@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit {
   falconBody: any;
   falconPlanetNames = [];
   falconVehicleNames = [];
+  falconToken: any;
 
   falconForm = this.fb.group({
     planetOne: [{value: '', disabled: false}, Validators.required],
@@ -288,9 +289,9 @@ export class HomeComponent implements OnInit {
     console.log(this.falconVehicleNames);
 
     this.getAIToken.getToken().subscribe( x => {
-      console.log(x);
+      this.falconToken = x;
       this.falconBody = {
-        'token': x.token,
+        'token': this.falconToken.token,
         'planet_names': this.falconPlanetNames,
         'vehicle_names': this.falconVehicleNames
       };

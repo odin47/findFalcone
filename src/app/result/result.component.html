@@ -1,16 +1,3 @@
-<div class="fixed-header">
-
-  <div class="container">
-
-      <nav>
-          <a href="#">
-              <img src="../assets/logo.png">
-          </a>
-          <a href="#">Home</a>
-          <a href="#">About</a>
-      </nav>
-  </div>
-</div>
 <div class="result-class" *ngIf = "resultFlag; else failure">
     <p>
     Success! Congratulations on Finding Falcone. King Shan is  mighty pleased.<br><br>
@@ -30,9 +17,3 @@
     <div class="buttonContainer">
     <button mat-raised-button color="primary" type="submit"  [routerLink]="['/home']">Start Again</button>
     </div>
-
-<div class="fixed-footer">
-  <div class="container">Copyright &copy; 2018
-      <a href="http://www.geektrust.in/finding-falcone" style="color: antiquewhite">www.geektrust.in/finding-falcone</a>
-  </div>
-</div>
