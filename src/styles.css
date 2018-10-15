@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+.container{
+    width: 80%;
+   
+    margin-left: 0px;
+}
+
+.container {
+    line-height: 65px;
+}
+
+
+nav a{
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 25px;
+    display: inline-block;
+    margin: 0 auto; /* Center the DIV horizontally */
+}
+
+.fixed-header, .fixed-footer {
+    width: 100%;
+    position: fixed;        
+    background: #333;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.fixed-header{
+    top: 0;
+}
+
+.fixed-footer{
+    bottom: 0;
+}
+
+
+
+img {
+    height:100px;
+}
+
+.main-header {
+    color: black;
+}
+/*mat-grid-tile {
+    background: lightblue;
+  }*/
+
+  mat-grid-list {
+      top:150px;
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }

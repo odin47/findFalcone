@@ -1,0 +1,93 @@
+<div class="fixed-header">
+
+  <div class="container">
+
+      <nav>
+          <a href="#">
+              <img src="../assets/logo.png">
+          </a>
+          <a href="#">Home</a>
+          <a href="#">About</a>
+      </nav>
+  </div>
+</div>
+
+<form [formGroup]="falconForm">
+  <mat-grid-list cols="4" rowHeight="2:1">
+          <div id="container">
+                  <div id="center">Finding Falcone!</div>
+                  <div id="right">Time Taken: {{timeTaken}}</div>
+                </div>
+      <h3 style="text-align: center">Select planets you want to search in:</h3>
+      <mat-grid-tile>
+          <mat-form-field class="falcon-full-width" id="planetOne">
+              <input input="text"  matInput placeholder="Destination 1" aria-label="Number" formControlName="planetOne" [matAutocomplete]="auto1">
+              <mat-autocomplete #auto1="matAutocomplete" (optionSelected)="selectedPlanet($event)">
+                  <mat-option *ngFor="let option1 of filteredOptionsOne | async" [value]="option1.name">
+                      {{option1.name}}
+                  </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-form-field class="falcon-full-width">
+              <input input="text" matInput placeholder="Destination 2" aria-label="Number" formControlName="planetTwo" [matAutocomplete]="auto2">
+              <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selectedPlanet($event)">
+                  <mat-option *ngFor="let option2 of filteredOptionsTwo | async" [value]="option2.name">
+                      {{option2.name}}
+                  </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+              <mat-form-field class="falcon-full-width">
+                  <input input="text" matInput placeholder="Destination 3" aria-label="Number" formControlName="planetThree" [matAutocomplete]="auto3">
+                  <mat-autocomplete #auto3="matAutocomplete" (optionSelected)="selectedPlanet($event)">
+                      <mat-option *ngFor="let option3 of filteredOptionsThree | async" [value]="option3.name">
+                          {{option3.name}}
+                      </mat-option>
+                  </mat-autocomplete>
+              </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+              <mat-form-field class="falcon-full-width">
+                  <input input="text" matInput placeholder="Destination 4" aria-label="Number" formControlName="planetFour" [matAutocomplete]="auto4">
+                  <mat-autocomplete #auto4="matAutocomplete" (optionSelected)="selectedPlanet($event)">
+                      <mat-option *ngFor="let option4 of filteredOptionsFour | async" [value]="option4.name">
+                          {{option4.name}}
+                      </mat-option>
+                  </mat-autocomplete>
+              </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <mat-radio-group formControlName="vehicleOne" *ngIf="vehicleOneFlag">
+              <mat-radio-button *ngFor="let vehicle1 of planetVehiclesOne"  name="opList" [value]="vehicle1.name" [disabled]="disableVehicle(vehicle1)">{{ vehicle1.name}} ({{ vehicle1.total_no}})</mat-radio-button>
+            </mat-radio-group>
+      </mat-grid-tile>
+      <mat-grid-tile>
+              <mat-radio-group formControlName="vehicleTwo" *ngIf="vehicleTwoFlag">
+                      <mat-radio-button *ngFor="let vehicle2 of planetVehiclesTwo"   [value]="vehicle2.name" [disabled]="disableVehicle(vehicle2)">{{ vehicle2.name}} ({{ vehicle2.total_no}})</mat-radio-button>
+                    </mat-radio-group>
+      </mat-grid-tile>
+      <mat-grid-tile>
+              <mat-radio-group formControlName="vehicleThree" *ngIf="vehicleThreeFlag">
+                      <mat-radio-button *ngFor="let vehicle3 of planetVehiclesThree"   [value]="vehicle3.name" [disabled]="disableVehicle(vehicle3)">{{ vehicle3.name}} ({{ vehicle3.total_no}})</mat-radio-button>
+                    </mat-radio-group>
+      </mat-grid-tile>
+      <mat-grid-tile>
+              <mat-radio-group formControlName="vehicleFour" *ngIf="vehicleFourFlag">
+                      <mat-radio-button *ngFor="let vehicle4 of planetVehiclesFour"  [value]="vehicle4.name" [disabled]="disableVehicle(vehicle4)">{{ vehicle4.name}} ({{ vehicle4.total_no}})</mat-radio-button>
+                    </mat-radio-group>
+      </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="buttonContainer">
+      <button mat-raised-button color="primary" type="submit" (click)="findFalcone()" [routerLink]="['/result']">Find Falcone!</button>
+  </div>
+</form>
+
+<div class="fixed-footer">
+  <div class="container">Copyright &copy; 2018
+      <a href="http://www.geektrust.in/finding-falcone" style="color: antiquewhite">www.geektrust.in/finding-falcone</a>
+  </div>
+</div>
