@@ -17,14 +17,11 @@ export class ResultComponent implements OnInit {
   ngOnInit() {
     this.planetsService.currentMessage.subscribe(message => {
       this.message = message;
-      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@' + this.message.status);
       if (this.message.status === 'success') {
           this.resultFlag = true;
         } else {
           this.resultFlag = false;
         }
-    console.log('RESULTTTTTTTTTTTTTt' + JSON.stringify(message));
-    console.log('FLaggggggg' + this.resultFlag);
   });
   }
 
