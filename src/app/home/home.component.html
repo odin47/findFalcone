@@ -10,7 +10,7 @@
       <mat-grid-tile>
           <mat-form-field class="falcon-full-width" id="planetOne">
               <input input="text"  matInput placeholder="Destination 1" aria-label="Number" formControlName="planetOne" [matAutocomplete]="auto1">
-              <mat-autocomplete #auto1="matAutocomplete" (optionSelected)="selectedPlanet($event)">
+              <mat-autocomplete #auto1="matAutocomplete" (optionSelected)="selectedPlanet($event, 'planetOne')">
                   <mat-option *ngFor="let option1 of filteredOptionsOne | async" [value]="option1.name">
                       {{option1.name}}
                   </mat-option>
@@ -20,7 +20,7 @@
       <mat-grid-tile>
           <mat-form-field class="falcon-full-width">
               <input input="text" matInput placeholder="Destination 2" aria-label="Number" formControlName="planetTwo" [matAutocomplete]="auto2">
-              <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selectedPlanet($event)">
+              <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selectedPlanet($event, 'planetTwo')">
                   <mat-option *ngFor="let option2 of filteredOptionsTwo | async" [value]="option2.name">
                       {{option2.name}}
                   </mat-option>
@@ -30,7 +30,7 @@
       <mat-grid-tile>
               <mat-form-field class="falcon-full-width">
                   <input input="text" matInput placeholder="Destination 3" aria-label="Number" formControlName="planetThree" [matAutocomplete]="auto3">
-                  <mat-autocomplete #auto3="matAutocomplete" (optionSelected)="selectedPlanet($event)">
+                  <mat-autocomplete #auto3="matAutocomplete" (optionSelected)="selectedPlanet($event, 'planetThree')">
                       <mat-option *ngFor="let option3 of filteredOptionsThree | async" [value]="option3.name">
                           {{option3.name}}
                       </mat-option>
@@ -40,7 +40,7 @@
       <mat-grid-tile>
               <mat-form-field class="falcon-full-width">
                   <input input="text" matInput placeholder="Destination 4" aria-label="Number" formControlName="planetFour" [matAutocomplete]="auto4">
-                  <mat-autocomplete #auto4="matAutocomplete" (optionSelected)="selectedPlanet($event)">
+                  <mat-autocomplete #auto4="matAutocomplete" (optionSelected)="selectedPlanet($event, 'planetFour')">
                       <mat-option *ngFor="let option4 of filteredOptionsFour | async" [value]="option4.name">
                           {{option4.name}}
                       </mat-option>

@@ -201,10 +201,10 @@ export class HomeComponent implements OnInit {
       );
      }
 
-     selectedPlanet(event) {
+     selectedPlanet(event, planetSel) {
        const e = 0;
        console.log(event);
-      if (event.source.id === 'mat-autocomplete-0') {
+      if (planetSel === 'planetOne') {
         this.planetVehiclesOne = JSON.parse(JSON.stringify(this.vehicles));
         this.vehicleOneFlag = true;
         this.falconForm.get('planetTwo').enable();
@@ -216,7 +216,7 @@ export class HomeComponent implements OnInit {
       }
         this.popPlanets.push(this.falconForm.get('planetOne').value);
         this.getPlanets(this.popPlanets);
-      } else if (event.source.id === 'mat-autocomplete-1') {
+      } else if (planetSel === 'planetTwo') {
         this.planetVehiclesTwo = JSON.parse(JSON.stringify(this.planetVehiclesOne));
         this.vehicleTwoFlag = true;
         this.falconForm.get('planetThree').enable();
@@ -229,7 +229,7 @@ export class HomeComponent implements OnInit {
           }
         }
         this.getPlanets(this.popPlanets);
-      } else if (event.source.id === 'mat-autocomplete-2') {
+      } else if (planetSel === 'planetThree') {
         this.planetVehiclesThree = JSON.parse(JSON.stringify(this.planetVehiclesTwo));
         this.vehicleThreeFlag = true;
         this.falconForm.get('planetFour').enable();
@@ -242,7 +242,7 @@ export class HomeComponent implements OnInit {
           }
         }
         this.getPlanets(this.popPlanets);
-      } else if (event.source.id === 'mat-autocomplete-3') {
+      } else if (planetSel === 'planetFour') {
         this.planetVehiclesFour = JSON.parse(JSON.stringify(this.planetVehiclesThree));
         this.vehicleFourFlag = true;
         this.falconForm.get('vehicleThree').disable();
