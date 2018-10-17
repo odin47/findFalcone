@@ -17,6 +17,7 @@ export class ResultComponent implements OnInit {
   ngOnInit() {
     this.planetsService.currentMessage.subscribe(message => {
       this.message = message;
+      console.log('Response...........' + this.message.error);
       if (this.message.status === 'success') {
           this.resultFlag = true;
         } else {
