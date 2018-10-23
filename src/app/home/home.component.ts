@@ -17,6 +17,7 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
+  spinnerFlag: boolean;
   planets: Planet[];
   vehicles: Vehicle[];
   planetVehiclesOne: Vehicle[];
@@ -158,7 +159,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPlanets(removePlanets?: Array<String>) {
-    this.planetsService.getPlanets().subscribe((x: Planet[]) => {
+      this.planetsService.getPlanets().subscribe((x: Planet[]) => {
       this.planets = x;
        if (removePlanets) {
         for (let i = 0; i < removePlanets.length; i++) {

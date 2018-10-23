@@ -11,10 +11,12 @@ export class ResultComponent implements OnInit {
   private falconResult;
   message: any;
   resultFlag: boolean;
+  spinnerFlag: boolean;
   constructor(private planetsService: PlanetsService) {
      }
 
   ngOnInit() {
+    this.spinnerFlag = true;
     this.planetsService.currentMessage.subscribe(message => {
       this.message = message;
       console.log('Response...........' + this.message.error);
@@ -23,6 +25,7 @@ export class ResultComponent implements OnInit {
         } else {
           this.resultFlag = false;
         }
+        this.spinnerFlag = false;
   });
   }
 

@@ -1,6 +1,6 @@
 
 
-<form [formGroup]="falconForm">
+<form novalidate [formGroup]="falconForm">
   <mat-grid-list cols="4" rowHeight="2:1">
           <div id="container">
                   <div id="center">Finding Falcone!</div>
@@ -70,6 +70,6 @@
   </mat-grid-list>
 
   <div class="buttonContainer">
-      <button mat-raised-button color="primary" type="submit" (click)="findFalcone()" [routerLink]="['/result']">Find Falcone!</button>
+      <button mat-raised-button color="primary" type="submit" (click)="findFalcone()" [routerLink]="['/result']" [disabled]="!falconForm.valid">Find Falcone!</button>
   </div>
 </form>
