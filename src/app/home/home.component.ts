@@ -60,20 +60,19 @@ export class HomeComponent implements OnInit {
   falconToken: any;
 
   falconForm = this.fb.group({
-    planetOne: [{value: '', disabled: false}, Validators.required],
-    vehicleOne: [''],
-    planetTwo: [{value: '', disabled: true}, Validators.required],
-    vehicleTwo: [''],
-    planetThree: [{value: '', disabled: true}, Validators.required],
-    vehicleThree: [''],
-    planetFour: [{value: '', disabled: true}, Validators.required],
-    vehicleFour: ['']
+    planetOne: [{value: '', disabled: false}, [ Validators.required]],
+    vehicleOne: ['', [Validators.required]],
+    planetTwo: [{value: '', disabled: true}, [ Validators.required]],
+    vehicleTwo: ['', [Validators.required]],
+    planetThree: [{value: '', disabled: true}, [ Validators.required]],
+    vehicleThree: ['', [Validators.required]],
+    planetFour: [{value: '', disabled: true}, [ Validators.required]],
+    vehicleFour: ['', [Validators.required]],
   });
 
    constructor(private fb: FormBuilder, private planetsService: PlanetsService, private getAIToken: GetTokenService,
      private getAIFalcon: FindFalconeService) {
      this.falconForm.get('vehicleOne').valueChanges.subscribe(val => {
-       console.log(this.tempVehicleOne);
        if (val) {
         for (let i = 0; i < this.planetVehiclesOne.length; i++) {
           if (this.tempVehicleOne && this.tempVehicleOne === this.planetVehiclesOne[i].name) {
@@ -93,7 +92,6 @@ export class HomeComponent implements OnInit {
 
 
      this.falconForm.get('vehicleTwo').valueChanges.subscribe(val => {
-       console.log(this.tempVehicleTwo);
        if (val) {
         for (let i = 0; i < this.planetVehiclesTwo.length; i++) {
           if (this.tempVehicleTwo && this.tempVehicleTwo === this.planetVehiclesTwo[i].name ) {
@@ -106,14 +104,11 @@ export class HomeComponent implements OnInit {
         }
        }
        this.tempVehicleTwo = val;
-       console.log(this.vehicleSelected);
-       console.log(this.vehicleSpeed);
        this.timeTaken = this.timeTakenOne + (this.vehicleSelected / this.vehicleSpeed);
        this.timeTakenTwo = this.timeTaken;
      });
 
      this.falconForm.get('vehicleThree').valueChanges.subscribe(val => {
-      console.log(this.tempVehicleThree);
       if (val) {
        for (let i = 0; i < this.planetVehiclesThree.length; i++) {
          if (this.tempVehicleThree && this.tempVehicleThree === this.planetVehiclesThree[i].name) {
@@ -126,14 +121,11 @@ export class HomeComponent implements OnInit {
        }
       }
       this.tempVehicleThree = val;
-      console.log(this.vehicleSelected);
-      console.log(this.vehicleSpeed);
       this.timeTaken = this.timeTakenTwo + (this.vehicleSelected / this.vehicleSpeed);
       this.timeTakenThree = this.timeTaken;
     });
 
     this.falconForm.get('vehicleFour').valueChanges.subscribe(val => {
-      console.log(this.tempVehicleFour);
       if (val) {
        for (let i = 0; i < this.planetVehiclesFour.length; i++) {
          if (this.tempVehicleFour && this.tempVehicleFour === this.planetVehiclesFour[i].name) {
@@ -146,8 +138,6 @@ export class HomeComponent implements OnInit {
        }
       }
       this.tempVehicleFour = val;
-      console.log(this.vehicleSelected);
-      console.log(this.vehicleSpeed);
       this.timeTaken = this.timeTakenThree + (this.vehicleSelected / this.vehicleSpeed);
     });
    }
@@ -155,7 +145,6 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
       this.getPlanets();
       this.getVehicles();
-      console.log(this.falconForm);
   }
 
   getPlanets(removePlanets?: Array<String>) {
@@ -163,13 +152,10 @@ export class HomeComponent implements OnInit {
       this.planets = x;
        if (removePlanets) {
         for (let i = 0; i < removePlanets.length; i++) {
-          console.log(removePlanets[i]);
-          // this.planetFilteredList = this.planets.filter(planet => planet.name === removePlanets[i]);
           const index = this.planets.findIndex(planet => planet.name === removePlanets[i]);
           this.planets.splice(index, 1);
         }
       }
-      console.log(this.planets);
       this.getAutoPlanets(this.planets);
      });
   }
@@ -204,7 +190,6 @@ export class HomeComponent implements OnInit {
 
      selectedPlanet(event, planetSel) {
        const e = 0;
-       console.log(event);
       if (planetSel === 'planetOne') {
         this.planetVehiclesOne = JSON.parse(JSON.stringify(this.vehicles));
         this.vehicleOneFlag = true;
@@ -257,7 +242,6 @@ export class HomeComponent implements OnInit {
      }
 
      selectedVehicle(event) {
-        console.log(event);
      }
   private _filter(value: string, autoPlanets: Planet[]) {
     const filterValue = value.toLowerCase();
@@ -267,7 +251,6 @@ export class HomeComponent implements OnInit {
   getVehicles() {
     this.planetsService.getVehicles().subscribe((x: Vehicle[]) => {
       this.vehicles = x;
-      console.log(x);
     });
   }
 
@@ -286,8 +269,6 @@ export class HomeComponent implements OnInit {
     this.falconVehicleNames.push(this.falconForm.get('vehicleTwo').value);
     this.falconVehicleNames.push(this.falconForm.get('vehicleThree').value);
     this.falconVehicleNames.push(this.falconForm.get('vehicleFour').value);
-    console.log(this.falconPlanetNames);
-    console.log(this.falconVehicleNames);
 
     this.getAIToken.getToken().subscribe( x => {
       this.falconToken = x;
@@ -298,8 +279,6 @@ export class HomeComponent implements OnInit {
       };
 
       this.getAIFalcon.getFalcon(this.falconBody).subscribe(y => {
-        console.log(y);
-      console.log(this.falconBody);
       this.planetsService.setFalcon(y, this.timeTaken);
       });
          });
